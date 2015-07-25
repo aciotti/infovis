@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
+<body>
+
+<svg id ="viz" width="800" height="600">
+  </svg>
+  
+<script>
+
+
+
+var datos = [{"Provincia":"Buenos Aires","Habitantes":15625},
+{"Provincia":"Córdoba","Habitantes":3308},
+{"Provincia":"Santa Fe","Habitantes":3194},
+{"Provincia":"C.A.B.A.","Habitantes":2890},
+{"Provincia":"Mendoza","Habitantes":1738},
+{"Provincia":"Tucumán","Habitantes":1448},
+{"Provincia":"Entre Ríos","Habitantes":1235},
+{"Provincia":"Salta","Habitantes":1214},
+{"Provincia":"Misiones","Habitantes":1101},
+{"Provincia":"Chaco","Habitantes":1055},
+{"Provincia":"Corrientes","Habitantes":992},
+{"Provincia":"Santiago del Estero","Habitantes":874},
+{"Provincia":"San Juan","Habitantes":681},
+{"Provincia":"Jujuy","Habitantes":673},
+{"Provincia":"Río Negro","Habitantes":638},
+{"Provincia":"Neuquén","Habitantes":551},
+{"Provincia":"Formosa","Habitantes":530},
+{"Provincia":"Chubut","Habitantes":509},
+{"Provincia":"San Luis","Habitantes":432},
+{"Provincia":"Catamarca","Habitantes":367},
+{"Provincia":"La Rioja","Habitantes":333},
+{"Provincia":"La Pampa","Habitantes":318},
+{"Provincia":"Santa Cruz","Habitantes":273},
+{"Provincia":"Tierra del Fuego","Habitantes":127}];
+
+var inicio = d3.select("#viz").selectAll("data").data(datos).enter();
+
+inicio.append("rect").attr("x",140).attr("y", function(d,i) {return i*22;}).attr("width",function(d,i) {return d.Habitantes/50;}).attr("height", 20).attr("fill", "green");
+
+inicio.append("text").attr("x",5).attr("y", function(d,i) {return i*22+16;}).attr("fill", "black").attr("font-family","Verdana").attr("font-size","12").text(function(d,i) {return d.Provincia;});
+
+inicio.append("text").attr("x",function(d,i) {return d.Habitantes/50+145;}).attr("y", function(d,i) {return i*22+16;}).attr("fill", "black").attr("font-family","Verdana").attr("font-size","12").text(function(d,i) {return d.Habitantes;});
+  
+</script>
+  
+</body>
+</html>
